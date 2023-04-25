@@ -1,30 +1,55 @@
 import './ExpenseItem.css';
 function ExpenseItem(){
+    const carD = 'Car Insurance';
+    const carP = 'Rs 300';
+    const carL = 'Transport'
+    const movieD = 'Movies';
+    const movieP = 'Rs 200';
+    const movieL = 'Outing'
+    const foodD = 'Food';
+    const foodP = 'Rs 10';
+    const foodL = 'Restro'
+    const petrolD = 'Petrol';
+    const petrolP = 'Rs 100';
+    const petrolL = 'Transport'
+
     return  (
             <div className='expense-item'>
                 <div className='expense-item__description'>
-                    <h2>Car Insurance</h2>
+                    <h2>{carD}</h2>
                 </div>
                 <div className='expense-item__price'>
-                    Rs 300
+                    {carP}
+                </div>
+                <div className='expense-item__price'>
+                    {carL}
                 </div>
                 <div className='expense-item__description'>
-                    <h2>Movies</h2>
+                    <h2>{movieD}</h2>
                 </div>
                 <div className='expense-item__price'>
-                    Rs 200
+                    {movieP}
+                </div>
+                <div className='expense-item__price'>
+                    {movieL}
                 </div>
                 <div className='expense-item__description'>
-                    <h2>Food</h2>
+                    <h2>{foodD}</h2>
                 </div>
                 <div className='expense-item__price'>
-                    Rs 10
+                    {foodP}
+                </div>
+                <div className='expense-item__price'>
+                    {foodL}
                 </div>
                 <div className='expense-item__description'>
-                    <h2>Petrol</h2>
+                    <h2>{petrolD}</h2>
                 </div>
                 <div className='expense-item__price'>
-                    Rs 100
+                    {petrolP}
+                </div>
+                <div className='expense-item__price'>
+                    {petrolL}
                 </div>
 
             </div>   
