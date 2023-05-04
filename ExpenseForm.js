@@ -5,7 +5,38 @@ const ExpenseForm = () => {
     const [enteredLocation, finalLocation] = useState('');
     const [enteredAmount, finalAmount] = useState('');
     const [enteredDate, finalDate] = useState('');
-    
+
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: '',
+    //     enteredLocation: '',
+    //     enteredAmount: '',
+    //     enteredDate: '', 
+
+    // })
+    // const titleChanger = (event) => {
+    //    setUserInput({
+    //     ...userInput,
+    //     enteredTitle: event.target.value,
+    //    })
+    // }
+    // const amountChanger = (event) => {
+    //     setUserInput({
+    //         ...userInput,
+    //         enteredAmount: event.target.value,
+    //        })
+    // }
+    // const locationChanger = (event) => {
+    //     setUserInput({
+    //         ...userInput,
+    //         enteredLocation: event.target.value,
+    //        })
+    // }
+    // const dateChanger = (event) => {
+    //     setUserInput({
+    //         ...userInput,
+    //         enteredDate: event.target.value,
+    //        })
+    // }
     const titleChanger = (event) => {
         finalTitle(event.target.value);
     }
@@ -18,7 +49,19 @@ const ExpenseForm = () => {
     const dateChanger = (event) => {
         finalDate(event.target.value);
     }
-    return <form>
+    const submission = (event) => {
+        event.preventDefault();
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            location: enteredLocation,
+            date: new Date(enteredDate)
+        };
+        console.log(expenseData);
+    };
+    return (
+    <form onSubmit={submission}>
         <div className='new-expense__controls'>
             <div className='new-expsense__control'>
                 <label>Title</label>
@@ -41,6 +84,7 @@ const ExpenseForm = () => {
             <button type='submit'>Add Expenses</button>
         </div>
     </form>
+    )
 }
 
 export default ExpenseForm;
