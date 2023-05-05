@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './ExpenseForm.css';
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle, finalTitle] = useState('');
     const [enteredLocation, finalLocation] = useState('');
     const [enteredAmount, finalAmount] = useState('');
@@ -58,26 +58,30 @@ const ExpenseForm = () => {
             location: enteredLocation,
             date: new Date(enteredDate)
         };
-        console.log(expenseData);
+        props.onSaveExpenseData(expenseData);
+        finalTitle('');
+        finalAmount('');
+        finalLocation('');
+        finalDate('');
     };
     return (
     <form onSubmit={submission}>
         <div className='new-expense__controls'>
             <div className='new-expsense__control'>
                 <label>Title</label>
-                <input type='text' onChange={titleChanger}/>
+                <input type='text' value={enteredTitle} onChange={titleChanger}/>
             </div>
             <div className='new-expsense__control'>
                 <label>Location</label>
-                <input type='text' onChange={locationChanger}/>
+                <input type='text' value={enteredLocation} onChange={locationChanger}/>
             </div>
             <div className='new-expsense__control'>
                 <label>Amount</label>
-                <input type='number' min="0" onChange={amountChanger}/>
+                <input type='number' min="0" value={enteredAmount} onChange={amountChanger}/>
             </div>
             <div className='new-expsense__control'>
                 <label>Date</label>
-                <input type='date' min="2023-01-01" max="2025-01-01" onChange={dateChanger}/>
+                <input type='date' min="2023-01-01" max="2025-01-01" value={enteredDate} onChange={dateChanger}/>
             </div>
         </div>
         <div className='new-expense__actions'>

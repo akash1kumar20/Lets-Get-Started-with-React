@@ -1,6 +1,7 @@
 import ExpenseItem from './components/ExpenseItem';
 import logo from './logo.svg';
 import './App.css';
+import NewExpense from './components/NewExpense';
 
 const App = () => {
   const expenses = [
@@ -32,32 +33,37 @@ const App = () => {
       locationOfExpenditure: 'Shopping',
     },
   ];
+
+  const addExpenseHandler = expense => {
+    console.log('In App.js');
+    console.log(expense);
+  }
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>Let's get started</h2>
+        <NewExpense onAddExpense={addExpenseHandler}/>
         <ExpenseItem 
                    date = {expenses[0].date}
-                   detail ={expenses[0].title} 
+                   title ={expenses[0].title} 
                    price ={expenses[0].amount}
                    location ={expenses[0].locationOfExpenditure}
         ></ExpenseItem>
                 <ExpenseItem 
                    date = {expenses[1].date}
-                   detail ={expenses[1].title} 
+                   title ={expenses[1].title} 
                    price ={expenses[1].amount}
                    location ={expenses[1].locationOfExpenditure}
         ></ExpenseItem>
                 <ExpenseItem 
                    date = {expenses[2].date}
-                   detail ={expenses[2].title} 
+                   title ={expenses[2].title} 
                    price ={expenses[2].amount}
                    location ={expenses[2].locationOfExpenditure}
         ></ExpenseItem>
                 <ExpenseItem 
                    date = {expenses[3].date}
-                   detail ={expenses[3].title} 
+                   title ={expenses[3].title} 
                    price ={expenses[3].amount}
                    location ={expenses[3].locationOfExpenditure}
         ></ExpenseItem>
