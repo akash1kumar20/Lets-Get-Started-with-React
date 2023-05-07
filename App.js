@@ -1,74 +1,50 @@
-import ExpenseItem from './components/ExpenseItem';
-import logo from './logo.svg';
-import './App.css';
-import NewExpense from './components/NewExpense';
+import React, {useState} from 'react';
+
+import NewExpense from './components/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses';
+
+const expensesBunch = [
+  {
+    id: 'e1',
+    title: 'Toilet Paper',
+    amount: 94.12,
+    date: new Date(2022, 7, 14),
+  },
+  { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+  {
+    id: 'e3',
+    title: 'Car Insurance',
+    amount: 294.67,
+    date: new Date(2020, 2, 28),
+  },
+  {
+    id: 'e4',
+    title: 'New Desk (Wooden)',
+    amount: 450,
+    date: new Date(2020, 5, 12),
+  },
+];
 
 const App = () => {
-  const expenses = [
-    {
-      id: 'e1',
-      date: new Date(2023, 5, 20),
-      title: 'Toilet Paper',
-      amount: 94.12,
-      locationOfExpenditure: 'Home-Item',
-    },
-    { id: 'e2', 
-    date: new Date(2023, 7, 22),
-      title: 'New TV', 
-      amount: 799.49, 
-      locationOfExpenditure: 'House-Appliances'
-    },
-    {
-      id: 'e3',
-      date: new Date(2023, 2, 2),
-      title: 'Car Insurance',
-      amount: 294.67,
-      locationOfExpenditure: 'Transport',
-    },
-    {
-      id: 'e4',
-      date: new Date(2023, 1, 20),
-      title: 'New Desk (Wooden)',
-      amount: 450,
-      locationOfExpenditure: 'Shopping',
-    },
-  ];
+   const [expenses, setExpenses] = useState(expensesBunch);
 
   const addExpenseHandler = expense => {
-    console.log('In App.js');
-    console.log(expense);
-  }
+   setExpenses((prevExpenses) => {
+    return [expense, ...prevExpenses];
+   });
+  };
+
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <NewExpense onAddExpense={addExpenseHandler}/>
-        <ExpenseItem 
-                   date = {expenses[0].date}
-                   title ={expenses[0].title} 
-                   price ={expenses[0].amount}
-                   location ={expenses[0].locationOfExpenditure}
-        ></ExpenseItem>
-                <ExpenseItem 
-                   date = {expenses[1].date}
-                   title ={expenses[1].title} 
-                   price ={expenses[1].amount}
-                   location ={expenses[1].locationOfExpenditure}
-        ></ExpenseItem>
-                <ExpenseItem 
-                   date = {expenses[2].date}
-                   title ={expenses[2].title} 
-                   price ={expenses[2].amount}
-                   location ={expenses[2].locationOfExpenditure}
-        ></ExpenseItem>
-                <ExpenseItem 
-                   date = {expenses[3].date}
-                   title ={expenses[3].title} 
-                   price ={expenses[3].amount}
-                   location ={expenses[3].locationOfExpenditure}
-        ></ExpenseItem>
-        
-      </header>
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} />
     </div>
   );
 }
