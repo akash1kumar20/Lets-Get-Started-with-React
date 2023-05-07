@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import './ExpenseForm.css';
+
 const ExpenseForm = (props) => {
+    
     const [enteredTitle, finalTitle] = useState('');
-    const [enteredLocation, finalLocation] = useState('');
     const [enteredAmount, finalAmount] = useState('');
     const [enteredDate, finalDate] = useState('');
 
     // const [userInput, setUserInput] = useState({
     //     enteredTitle: '',
-    //     enteredLocation: '',
     //     enteredAmount: '',
     //     enteredDate: '', 
 
@@ -25,12 +25,6 @@ const ExpenseForm = (props) => {
     //         enteredAmount: event.target.value,
     //        })
     // }
-    // const locationChanger = (event) => {
-    //     setUserInput({
-    //         ...userInput,
-    //         enteredLocation: event.target.value,
-    //        })
-    // }
     // const dateChanger = (event) => {
     //     setUserInput({
     //         ...userInput,
@@ -43,9 +37,6 @@ const ExpenseForm = (props) => {
     const amountChanger = (event) => {
         finalAmount(event.target.value);
     }
-    const locationChanger = (event) => {
-        finalLocation(event.target.value);
-    }
     const dateChanger = (event) => {
         finalDate(event.target.value);
     }
@@ -55,13 +46,11 @@ const ExpenseForm = (props) => {
         const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
-            location: enteredLocation,
             date: new Date(enteredDate)
         };
         props.onSaveExpenseData(expenseData);
         finalTitle('');
         finalAmount('');
-        finalLocation('');
         finalDate('');
     };
     return (
@@ -70,10 +59,6 @@ const ExpenseForm = (props) => {
             <div className='new-expsense__control'>
                 <label>Title</label>
                 <input type='text' value={enteredTitle} onChange={titleChanger}/>
-            </div>
-            <div className='new-expsense__control'>
-                <label>Location</label>
-                <input type='text' value={enteredLocation} onChange={locationChanger}/>
             </div>
             <div className='new-expsense__control'>
                 <label>Amount</label>
@@ -85,6 +70,7 @@ const ExpenseForm = (props) => {
             </div>
         </div>
         <div className='new-expense__actions'>
+        <button type='button' onClick={props.onCancel}>Cancel</button>
             <button type='submit'>Add Expenses</button>
         </div>
     </form>
